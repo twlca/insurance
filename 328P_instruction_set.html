@@ -1,0 +1,32 @@
+<doctype html>
+  <html lang="zh-TW">
+    <head>
+      <meta charset="UTF-8">
+      <title>ATMega328P Instruction Set</title>
+      <link rel="stylesheet" href="layout.css">
+      <link rel="stylesheet" href="is.css">
+    </head>
+    <body>
+      <h1>ATMega328P Instruction Set</h1>
+      <!-- Show Instructions Categorized by Function -->
+      <h3>SAR (Shift Arithmetic Right)</h3>
+      <p>SAR 指令大致和 SHR 指令類似，不同的地方為 SHR 指令向右移時，最高位元一定補上 0；但 SAR 指令向右移時，最高位元不一定補上 0， 它有可能補上 1. 補上 1 或 0 完全在於要右移的值的正負符號值 (也就是最高位元的值)。如果為負數 (即正負符號值為 1， 也就是最高位元為 1)，右移時最高位元補上 1. 如果為正數 (即正負符號值為 0, 也就是最高位兀為 0)，右移時最高位元補上 0. </p>
+      <pre>
+      (temp) &leftarrow; COUNT</code>
+      do while (temp) &neq; 0
+        (CF) &leftarrow; low-order-bit of (EA)
+        (EA) &leftarrow; (EA) / 2.     ; "/" 表示帶有正負符號的除法
+        (temp) &leftarrow; (temp) - 1
+        if COUNT = 1 then
+          if high-order-bit of (EA) &neq; next-to-high-order-bit of (EA) then
+            (OF) &leftarrow; 1
+          else
+            (OF) &leftarrow; 0
+        else
+          (OF) &leftarrow; 0
+      </pre>
+    <p>Opcode <p><span class="square-frame">1 1 0 1 0 0 v w</span><span class="square-frame">mod 1 1 1 r/m</span></p>
+    
+    </body>
+  </html>
+      
